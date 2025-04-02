@@ -1,0 +1,3359 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://images/BG.jpg" type="Texture" id=1]
+[ext_resource path="res://scripts/Panel.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Lilliput Steps.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/doubleClick.gd" type="Script" id=4]
+[ext_resource path="res://scripts/laptop.gd" type="Script" id=5]
+[ext_resource path="res://images/pass1.png" type="Texture" id=6]
+[ext_resource path="res://images/pass2.png" type="Texture" id=7]
+[ext_resource path="res://images/pic1.jpg" type="Texture" id=8]
+[ext_resource path="res://images/pic2.jpg" type="Texture" id=9]
+[ext_resource path="res://images/pic3.jpg" type="Texture" id=10]
+[ext_resource path="res://images/pass3.png" type="Texture" id=11]
+[ext_resource path="res://images/PHOTO.png" type="Texture" id=12]
+[ext_resource path="res://images/STIKCKY.png" type="Texture" id=13]
+[ext_resource path="res://images/FILE.png" type="Texture" id=14]
+[ext_resource path="res://images/LOCKEDFILE.png" type="Texture" id=15]
+[ext_resource path="res://images/NOTES.png" type="Texture" id=16]
+[ext_resource path="res://images/Chatter.png" type="Texture" id=17]
+[ext_resource path="res://images/RECYCLE.png" type="Texture" id=18]
+[ext_resource path="res://images/VENUS.jpg" type="Texture" id=19]
+[ext_resource path="res://images/ALTAR.jpg" type="Texture" id=20]
+[ext_resource path="res://images/VENUS.png" type="Texture" id=21]
+[ext_resource path="res://audio/doubleClickSFX.wav" type="AudioStream" id=22]
+[ext_resource path="res://audio/click.wav" type="AudioStream" id=23]
+[ext_resource path="res://audio/trash.wav" type="AudioStream" id=24]
+[ext_resource path="res://audio/error2.wav" type="AudioStream" id=25]
+[ext_resource path="res://audio/wind.wav" type="AudioStream" id=26]
+[ext_resource path="res://audio/venus.wav" type="AudioStream" id=27]
+[ext_resource path="res://audio/boot.wav" type="AudioStream" id=28]
+[ext_resource path="res://audio/error.wav" type="AudioStream" id=29]
+
+[sub_resource type="DynamicFont" id=5]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 10
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 15
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=16]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 3 )
+
+[node name="laptop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -71.0 ]
+}
+
+[node name="windSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+volume_db = -15.0
+
+[node name="completeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+volume_db = -15.0
+
+[node name="clickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -10.0
+
+[node name="trashSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+
+[node name="errorSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = -30.0
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = -5.0
+
+[node name="bootSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = -5.0
+
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( 961, 540 )
+texture = ExtResource( 1 )
+
+[node name="Recycle" type="Sprite" parent="."]
+position = Vector2( 109.25, 105.25 )
+scale = Vector2( 2.705, 2.705 )
+texture = ExtResource( 18 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 37.25
+margin_top = 180.25
+margin_right = 173.25
+margin_bottom = 220.25
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Recycle Bin
+"
+text = "Recycle Bin
+"
+scroll_active = false
+
+[node name="recyleButton" type="TextureButton" parent="."]
+margin_left = 27.25
+margin_top = 40.25
+margin_right = 178.25
+margin_bottom = 183.25
+script = ExtResource( 4 )
+
+[node name="Chatter" type="ColorRect" parent="."]
+visible = false
+margin_left = 34.0
+margin_top = 627.0
+margin_right = 34.0
+margin_bottom = 628.0
+color = Color( 0.0196078, 1, 0.309804, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Chatter"]
+margin_top = 136.0
+margin_right = 136.0
+margin_bottom = 176.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Chatter"
+text = "Chatter"
+
+[node name="chatterButton" type="TextureButton" parent="Chatter"]
+margin_right = 136.0
+margin_bottom = 136.0
+script = ExtResource( 4 )
+
+[node name="Chatter" type="Sprite" parent="Chatter"]
+position = Vector2( 77, 70 )
+scale = Vector2( 1.774, 1.774 )
+texture = ExtResource( 17 )
+
+[node name="Notes" type="ColorRect" parent="."]
+visible = false
+margin_left = 24.0
+margin_top = 252.0
+margin_right = 24.0
+margin_bottom = 252.0
+color = Color( 0.0196078, 0.792157, 1, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Notes"]
+margin_top = 136.0
+margin_right = 136.0
+margin_bottom = 176.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Notes
+"
+text = "Notes
+"
+scroll_active = false
+
+[node name="notesButton" type="TextureButton" parent="Notes"]
+margin_left = 10.0
+margin_top = 26.0
+margin_right = 123.0
+margin_bottom = 136.0
+script = ExtResource( 4 )
+
+[node name="Notes" type="Sprite" parent="Notes"]
+position = Vector2( 69, 70 )
+scale = Vector2( 2.377, 2.377 )
+texture = ExtResource( 16 )
+
+[node name="Folder" type="ColorRect" parent="."]
+visible = false
+margin_left = 23.0
+margin_top = 451.0
+margin_right = 23.0
+margin_bottom = 451.0
+color = Color( 0.992157, 1, 0.0196078, 1 )
+
+[node name="Lockedfile" type="Sprite" parent="Folder"]
+position = Vector2( 77, 70 )
+scale = Vector2( 1.77375, 1.77375 )
+texture = ExtResource( 15 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Folder"]
+margin_top = 136.0
+margin_right = 136.0
+margin_bottom = 176.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Stuffz
+"
+text = "Stuffz
+"
+scroll_active = false
+
+[node name="folderButton" type="TextureButton" parent="Folder"]
+margin_right = 152.0
+margin_bottom = 138.0
+script = ExtResource( 4 )
+
+[node name="Folder2" type="ColorRect" parent="."]
+visible = false
+margin_left = 23.0
+margin_top = 451.0
+margin_right = 23.0
+margin_bottom = 451.0
+color = Color( 0.992157, 1, 0.0196078, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Folder2"]
+margin_top = 136.0
+margin_right = 136.0
+margin_bottom = 176.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Stuffz
+"
+text = "Stuffz
+"
+scroll_active = false
+
+[node name="folder2Button" type="TextureButton" parent="Folder2"]
+margin_right = 136.0
+margin_bottom = 136.0
+script = ExtResource( 4 )
+
+[node name="File" type="Sprite" parent="Folder2"]
+position = Vector2( 77, 70 )
+scale = Vector2( 1.774, 1.774 )
+texture = ExtResource( 14 )
+
+[node name="chatterWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 1281.0
+margin_bottom = 233.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="chatterWindow"]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 1018.0
+margin_bottom = 570.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="chatterWindow"]
+margin_right = 1011.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="chatterWindow"]
+margin_top = 25.0
+margin_right = 1011.0
+margin_bottom = 564.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="chatterWindow"]
+margin_top = 25.0
+margin_right = 1011.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="chatterWindow"]
+margin_left = 198.0
+margin_top = 50.0
+margin_right = 204.0
+margin_bottom = 570.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="chatterWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Chatter"
+
+[node name="LineEdit" type="LineEdit" parent="chatterWindow"]
+margin_left = 204.0
+margin_top = 520.0
+margin_right = 1011.0
+margin_bottom = 564.0
+custom_fonts/font = SubResource( 4 )
+
+[node name="leftScroll" type="ScrollContainer" parent="chatterWindow"]
+margin_top = 57.0
+margin_right = 198.0
+margin_bottom = 564.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/leftScroll"]
+margin_right = 198.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 198, 514 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_right = 198.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " Jeremy"
+text = " Jeremy"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "away..."
+text = "away..."
+
+[node name="jeremyButton" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="ColorRect7" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel"]
+margin_left = 156.0
+margin_top = 19.0
+margin_right = 166.0
+margin_bottom = 29.0
+color = Color( 1, 0.937255, 0, 1 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_top = 104.0
+margin_right = 198.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " Tina"
+text = " Tina"
+
+[node name="ColorRect6" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel2"]
+margin_left = 114.0
+margin_top = 19.0
+margin_right = 124.0
+margin_bottom = 29.0
+color = Color( 1, 0.937255, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel2"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "away..."
+text = "away..."
+
+[node name="tinaButton" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel2"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_top = 208.0
+margin_right = 198.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = " Mom"
+text = " Mom"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel3"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "last online 18hrs ago"
+text = "last online 18hrs ago"
+
+[node name="momButton" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel3"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="ColorRect7" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel3"]
+margin_left = 94.0
+margin_top = 19.0
+margin_right = 104.0
+margin_bottom = 29.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_top = 312.0
+margin_right = 198.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " user314"
+text = " user314"
+
+[node name="ColorRect6" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel4"]
+margin_left = 174.0
+margin_top = 19.0
+margin_right = 184.0
+margin_bottom = 29.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel4"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "do not disturb"
+text = "do not disturb"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="user314Button" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel4"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_top = 416.0
+margin_right = 198.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " Dad"
+text = " Dad"
+
+[node name="ColorRect6" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel5"]
+margin_left = 94.0
+margin_top = 19.0
+margin_right = 104.0
+margin_bottom = 29.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel5"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "last online 12d ago"
+text = "last online 12d ago"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="dadButton" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel5"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_top = 520.0
+margin_right = 198.0
+margin_bottom = 620.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " user618"
+text = " user618"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel6"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "do not disturb"
+text = "do not disturb"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="user618Button" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel6"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="ColorRect6" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel6"]
+margin_left = 174.0
+margin_top = 19.0
+margin_right = 184.0
+margin_bottom = 29.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer"]
+margin_top = 624.0
+margin_right = 198.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 198, 100 )
+rect_pivot_offset = Vector2( 361, -63 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " Tiffany"
+text = " Tiffany"
+
+[node name="ColorRect6" type="ColorRect" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel7"]
+margin_left = 175.0
+margin_top = 18.0
+margin_right = 185.0
+margin_bottom = 28.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel7"]
+margin_left = 24.0
+margin_top = 35.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "last online 1hr ago"
+text = "last online 1hr ago"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Tiffany" type="Button" parent="chatterWindow/leftScroll/VBoxContainer/RichTextLabel7"]
+margin_left = 8.0
+margin_right = 180.0
+margin_bottom = 86.0
+flat = true
+
+[node name="momChat" type="ScrollContainer" parent="chatterWindow"]
+visible = false
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/momChat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/momChat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- November 29th ---[/color]
+[color=green]Mom:[/color]Hi honey, when do you think you'll be back home?
+
+[color=blue]Me:[/color]Winter break should be starting soon, maybe early December?
+
+[color=green]Mom:[/color]Sounds great! Dad and I will be waiting for you :)
+
+[color=blue]Me:[/color]Mom please stop using emoticons, you're making them uncool..
+
+[color=green]Mom:[/color]:(
+
+[color=gray]--- November 30th ---[/color]
+[color=blue]Me:[/color]Is it okay if i bring a friend over with me?
+
+[color=green]Mom:[/color]Of course i'd love to meet her!
+
+[color=blue]Me:[/color]Would it be a problem if that friend was a boy..
+
+[color=green]Mom:[/color]I'll have a chat with your dad.
+
+[color=gray]--- December 1st ---[/color]
+[color=blue]Me:[/color]It looks like the weather will clear up before i start driving
+
+[color=blue]Me:[/color]Any updates with dad ? :D
+
+[color=blue]Me:[/color]Mom please stop ignoring me I can see when you're online..
+
+[color=gray]--- December 2th ---[/color]
+
+[color=green]Mom:[/color]Okay fine. You can bring your friend. NO SLEEPING IN THE SAME BED.
+
+[color=blue]Me:[/color]EW no mom hes JUST a friend!!
+
+[color=green]Mom:[/color]He better just be a friend.i'll see you in 3 days.
+
+[color=gray]--- December 5th ---[/color]
+
+[color=blue]Me:[/color]Mom I love you so much.
+
+[color=green]Mom:[/color]Aww.. thank you honey I love you too.
+
+[color=green]Mom:[/color]I can't wait to see you later this afternoon"
+text = "--- November 29th ---
+Mom:Hi honey, when do you think you'll be back home?
+
+Me:Winter break should be starting soon, maybe early December?
+
+Mom:Sounds great! Dad and I will be waiting for you :)
+
+Me:Mom please stop using emoticons, you're making them uncool..
+
+Mom::(
+
+--- November 30th ---
+Me:Is it okay if i bring a friend over with me?
+
+Mom:Of course i'd love to meet her!
+
+Me:Would it be a problem if that friend was a boy..
+
+Mom:I'll have a chat with your dad.
+
+--- December 1st ---
+Me:It looks like the weather will clear up before i start driving
+
+Me:Any updates with dad ? :D
+
+Me:Mom please stop ignoring me I can see when you're online..
+
+--- December 2th ---
+
+Mom:Okay fine. You can bring your friend. NO SLEEPING IN THE SAME BED.
+
+Me:EW no mom hes JUST a friend!!
+
+Mom:He better just be a friend.i'll see you in 3 days.
+
+--- December 5th ---
+
+Me:Mom I love you so much.
+
+Mom:Aww.. thank you honey I love you too.
+
+Mom:I can't wait to see you later this afternoon"
+scroll_following = true
+
+[node name="jeremyChat" type="ScrollContainer" parent="chatterWindow"]
+visible = false
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/jeremyChat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/jeremyChat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- November 29th ---[/color]
+[color=blue]Me:[/color]I need a break soooooo bad
+
+[color=red]Jeremy:[/color]Me too..
+
+[color=red]Jeremy:[/color]Thankfully winter break is soon right??
+
+[color=blue]Me:[/color]Winter break? it's that close?
+
+[color=red]Jeremy:[/color]How could you forget?? it's all i've been looking forward too!!
+
+[color=blue]Me:[/color] I've been swarmed with so many finals I lost track of time..
+
+[color=red]Jeremy:[/color] You got any plans lined up for break?
+
+[color=blue]Me:[/color] ..Considering I just forgot about it, no.. 
+
+[color=red]Jeremy:[/color] hmmm...
+
+[color=red]Jeremy:[/color] You ever been to xxxxx ?
+
+[color=blue]Me:[/color] Isn't that where you're from?? 
+
+[color=blue]Me:[/color] My parents would KILL me if i went away with a boy they haven't met.
+
+[color=red]Jeremy:[/color] What about where you're from instead?
+
+[color=blue]Me:[/color] A little better, i'll have to work some magic.
+
+[color=blue]Me:[/color] I'll talk to my mom tomorrow, i need to finish studying.
+
+[color=gray]--- November 30th ---[/color]
+[color=red]Jeremy:[/color]How'd your test go?
+
+[color=blue]Me:[/color]I think I did really well
+
+[color=blue]Me:[/color]I'm honestly more worried about asking my mom about you
+
+[color=red]Jeremy:[/color]You still havent?? I would have figured it would've been talked about by now
+
+[color=blue]Me:[/color]If it was I would have told you!!
+
+[color=blue]Me:[/color]ugh i'll do it now, you're so needy.
+
+[color=red]Jeremy:[/color]:)
+
+[color=gray]--- December 1st ---[/color]
+[color=blue]Me:[/color]MY MOM IS LITERALLY IGNORING ME.
+
+[color=red]Jeremy:[/color]whatttttt
+
+[color=blue]Me:[/color]I KNOW RIGHT??
+
+[color=red]Jeremy:[/color]well winter break starts in 4 days, so you better figure something out.
+
+[color=blue]Me:[/color]im TRYING.
+
+[color=gray]--- December 2th ---[/color]
+[color=blue]Me:[/color]JEREMY MY MOM SAID YOU CAN STAY THE BREAK WITH US.
+
+[color=red]Jeremy:[/color]thank god i was getting worried for a second
+
+[color=blue]Me:[/color]One thing.. I told my mom you're just a friend.
+
+[color=red]Jeremy:[/color]what??? we've been dating for basically this whole semester.
+
+[color=red]Jeremy:[/color]I should at least be introduced as your boyfriend
+
+[color=blue]Me:[/color]I'm sorryyyyy this was the only way you'd be able to comeeeee
+
+[color=red]Jeremy:[/color]next time i'm over i better be \"boyfriend\".
+
+[color=blue]Me:[/color]I promise :)))
+
+[color=gray]--- December 4th ---[/color]
+[color=red]Jeremy:[/color]Hey what time we leaving tomorrow??
+
+[color=blue]Me:[/color]hmmmm
+
+[color=blue]Me:[/color]was thinking sometime in the afternoon?
+
+[color=red]Jeremy:[/color]Yeah that should work
+
+[color=red]Jeremy:[/color]Just message me when you're about to leave
+
+[color=gray]--- December 5th ---[/color]
+
+[color=red]Jeremy:[/color]Hey it's almost 3, you thinking about leaving soon?
+
+[color=red]Jeremy:[/color]Um it's almost 4.. did you wake up??
+"
+text = "--- November 29th ---
+Me:I need a break soooooo bad
+
+Jeremy:Me too..
+
+Jeremy:Thankfully winter break is soon right??
+
+Me:Winter break? it's that close?
+
+Jeremy:How could you forget?? it's all i've been looking forward too!!
+
+Me: I've been swarmed with so many finals I lost track of time..
+
+Jeremy: You got any plans lined up for break?
+
+Me: ..Considering I just forgot about it, no.. 
+
+Jeremy: hmmm...
+
+Jeremy: You ever been to xxxxx ?
+
+Me: Isn't that where you're from?? 
+
+Me: My parents would KILL me if i went away with a boy they haven't met.
+
+Jeremy: What about where you're from instead?
+
+Me: A little better, i'll have to work some magic.
+
+Me: I'll talk to my mom tomorrow, i need to finish studying.
+
+--- November 30th ---
+Jeremy:How'd your test go?
+
+Me:I think I did really well
+
+Me:I'm honestly more worried about asking my mom about you
+
+Jeremy:You still havent?? I would have figured it would've been talked about by now
+
+Me:If it was I would have told you!!
+
+Me:ugh i'll do it now, you're so needy.
+
+Jeremy::)
+
+--- December 1st ---
+Me:MY MOM IS LITERALLY IGNORING ME.
+
+Jeremy:whatttttt
+
+Me:I KNOW RIGHT??
+
+Jeremy:well winter break starts in 4 days, so you better figure something out.
+
+Me:im TRYING.
+
+--- December 2th ---
+Me:JEREMY MY MOM SAID YOU CAN STAY THE BREAK WITH US.
+
+Jeremy:thank god i was getting worried for a second
+
+Me:One thing.. I told my mom you're just a friend.
+
+Jeremy:what??? we've been dating for basically this whole semester.
+
+Jeremy:I should at least be introduced as your boyfriend
+
+Me:I'm sorryyyyy this was the only way you'd be able to comeeeee
+
+Jeremy:next time i'm over i better be \"boyfriend\".
+
+Me:I promise :)))
+
+--- December 4th ---
+Jeremy:Hey what time we leaving tomorrow??
+
+Me:hmmmm
+
+Me:was thinking sometime in the afternoon?
+
+Jeremy:Yeah that should work
+
+Jeremy:Just message me when you're about to leave
+
+--- December 5th ---
+
+Jeremy:Hey it's almost 3, you thinking about leaving soon?
+
+Jeremy:Um it's almost 4.. did you wake up??
+"
+scroll_following = true
+
+[node name="tinaChat" type="ScrollContainer" parent="chatterWindow"]
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/tinaChat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/tinaChat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- November 25th ---[/color]
+[color=blue]Me:[/color]Hey.. You get the study guide ?
+
+[color=purple]Tina:[/color]Yeah. I did. I was wondering where you were.
+
+[color=purple]Tina:[/color]Slept in?
+
+[color=blue]Me:[/color]You know me so well
+
+[color=purple]Tina:[/color]I'll stop by your dorm after this lecture
+
+[color=blue]Me:[/color] You're the best
+
+[color=gray]--- November 29th ---[/color]
+[color=purple]Tina:[/color]Hello? You there?
+
+[color=purple]Tina:[/color]You've been like.. gone for the past couple of days
+
+[color=blue]Me:[/color]Oh, yeah sorry i've been studying like crazy
+
+[color=purple]Tina:[/color]Wow, looks like someone finally got some sense into them
+
+[color=purple]Tina:[/color]Last time you studied this hard was in middle school
+
+[color=purple]Tina:[/color]..For a presentation about snakes
+
+[color=blue]Me:[/color]And guess who got a 100%?
+
+[color=purple]Tina:[/color]And that's what studying does.
+
+
+[color=gray]--- December 1st ---[/color]
+[color=blue]Me:[/color]Tina i'm freaking out!!
+
+[color=purple]Tina:[/color]what happened???
+
+[color=blue]Me:[/color]I'm planning on asking my mom if Jeremy could stay the break with us
+
+[color=purple]Tina:[/color]There's no way your parents will let you bring a boy over for break
+
+[color=purple]Tina:[/color]Let alone your boyfriend they don't even know about
+
+[color=purple]Tina:[/color]Still don't know what you see in him
+
+[color=blue]Me:[/color]Not helping.
+
+[color=purple]Tina:[/color]Wait does that mean he's going to be here for my birthday??
+
+[color=blue]Me:[/color]..maybe
+
+[color=purple]Tina:[/color]What a horrible 4 day early birthday present
+
+[color=gray]--- December 2th ---[/color]
+[color=blue]Me:[/color]TINAAAAA JEREMYS COMING BACK WITH MEEEEE
+
+[color=purple]Tina:[/color]I'm actually surprised
+
+[color=purple]Tina:[/color]How did you even manage to pull that off
+
+[color=blue]Me:[/color]soooo... Jeremy is just a friend for now
+
+[color=purple]Tina:[/color]I bet he'll be happy to hear that
+
+[color=blue]Me:[/color]I know i know
+
+[color=blue]Me:[/color]I hope he takes it well..
+
+[color=gray]--- December 4th ---[/color]
+[color=blue]Me:[/color]Hey.. You're leaving today right?
+
+[color=purple]Tina:[/color]Yeah just packed up my car about to leave soon
+
+[color=blue]Me:[/color]Oh okay.. I'm planning to leave around the afternoon tomorrow
+
+[color=purple]Tina:[/color]I'll see you tomorrow then 
+
+[color=gray]--- December 5th ---[/color]
+[color=purple]Tina:[/color]Hey you sleep in again? it's almost 2
+
+[color=purple]Tina:[/color]You planning on leaving anytime soon? it's way past the afternoon
+"
+text = "--- November 25th ---
+Me:Hey.. You get the study guide ?
+
+Tina:Yeah. I did. I was wondering where you were.
+
+Tina:Slept in?
+
+Me:You know me so well
+
+Tina:I'll stop by your dorm after this lecture
+
+Me: You're the best
+
+--- November 29th ---
+Tina:Hello? You there?
+
+Tina:You've been like.. gone for the past couple of days
+
+Me:Oh, yeah sorry i've been studying like crazy
+
+Tina:Wow, looks like someone finally got some sense into them
+
+Tina:Last time you studied this hard was in middle school
+
+Tina:..For a presentation about snakes
+
+Me:And guess who got a 100%?
+
+Tina:And that's what studying does.
+
+
+--- December 1st ---
+Me:Tina i'm freaking out!!
+
+Tina:what happened???
+
+Me:I'm planning on asking my mom if Jeremy could stay the break with us
+
+Tina:There's no way your parents will let you bring a boy over for break
+
+Tina:Let alone your boyfriend they don't even know about
+
+Tina:Still don't know what you see in him
+
+Me:Not helping.
+
+Tina:Wait does that mean he's going to be here for my birthday??
+
+Me:..maybe
+
+Tina:What a horrible 4 day early birthday present
+
+--- December 2th ---
+Me:TINAAAAA JEREMYS COMING BACK WITH MEEEEE
+
+Tina:I'm actually surprised
+
+Tina:How did you even manage to pull that off
+
+Me:soooo... Jeremy is just a friend for now
+
+Tina:I bet he'll be happy to hear that
+
+Me:I know i know
+
+Me:I hope he takes it well..
+
+--- December 4th ---
+Me:Hey.. You're leaving today right?
+
+Tina:Yeah just packed up my car about to leave soon
+
+Me:Oh okay.. I'm planning to leave around the afternoon tomorrow
+
+Tina:I'll see you tomorrow then 
+
+--- December 5th ---
+Tina:Hey you sleep in again? it's almost 2
+
+Tina:You planning on leaving anytime soon? it's way past the afternoon
+"
+scroll_following = true
+
+[node name="user314Chat" type="ScrollContainer" parent="chatterWindow"]
+visible = false
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="Pass2" type="Sprite" parent="chatterWindow/user314Chat"]
+position = Vector2( 480, 175 )
+texture = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/user314Chat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/user314Chat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- December 4th ---[/color]
+[color=red]user314:[/color]Hey.. you got the parcel right?
+
+[color=red]user314:[/color]I shouldn't be contacting you on a unsecure source but you're not responding on -----
+
+[color=gray]--- December 5th ---[/color]
+[color=red]user314:[/color]look this is your last warning
+
+[color=red]user314:[/color]I really can't help you anymore unless you respond back
+
+[color=red]user314:[/color]Your loss"
+text = "--- December 4th ---
+user314:Hey.. you got the parcel right?
+
+user314:I shouldn't be contacting you on a unsecure source but you're not responding on -----
+
+--- December 5th ---
+user314:look this is your last warning
+
+user314:I really can't help you anymore unless you respond back
+
+user314:Your loss"
+scroll_following = true
+
+[node name="user618Chat" type="ScrollContainer" parent="chatterWindow"]
+visible = false
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/user618Chat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/user618Chat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- November 8th ---[/color]
+[color=red]user618:[/color]127751939
+
+[color=blue]Me:[/color]?
+
+[color=red]user618:[/color]127751939
+
+[color=blue]Me:[/color]Who is this??
+
+[color=red]user618:[/color]Please pay attention to the meetings..
+
+[color=red]user618:[/color]Your password.
+
+[color=red]user618:[/color]I will not be discussing further.
+
+[color=blue]Me:[/color]okay.."
+text = "--- November 8th ---
+user618:127751939
+
+Me:?
+
+user618:127751939
+
+Me:Who is this??
+
+user618:Please pay attention to the meetings..
+
+user618:Your password.
+
+user618:I will not be discussing further.
+
+Me:okay.."
+scroll_following = true
+
+[node name="dadChat" type="ScrollContainer" parent="chatterWindow"]
+visible = false
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/dadChat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/dadChat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- September 2th ---[/color]
+[color=green]Dad:[/color]Hey sweetie, whats your email and password again?
+
+[color=blue]Me:[/color] What for??
+
+[color=green]Dad:[/color]Mom and I are trying to watch the new season of our show and need to use your netflick account
+
+[color=blue]Me:[/color]the email should be under photogirl221@gmail.com
+
+[color=blue]Me:[/color]and the password should be c4m3r4-12775
+
+[color=green]Dad:[/color]Thanks!
+
+[color=green]Dad:[/color]Hey so the password didn't work. Did you type it in wrong?
+
+[color=blue]Me:[/color]Did you put letters instead of numbers again??
+
+[color=green]Dad:[/color]Just logged in.
+
+[color=gray]--- September 30th ---[/color]
+[color=blue]Me:[/color]Dad weren't you into space or something when you were a kid?
+
+[color=green]Dad:[/color]Was just an old hobby of mine
+
+[color=blue]Me:[/color]I'm really enjoying the Venus club, everyone is so nice and welcoming
+
+[color=green]Dad:[/color]Ah the old Venus club still running? I haven't heard of that club since I was in college.
+
+[color=blue]Me:[/color]How come you never joined it?
+
+[color=green]Dad:[/color]I'm a bit of a Mars guy myself, at least you're able to inhabit it
+
+[color=green]Dad:[/color]You take one step into Venus and you're as good as gone
+
+[color=green]Dad:[/color]The atmosphere is acidic and thick, it's dry with no evidence of water, and the temperature is hot enough to melt lead
+
+[color=green]Dad:[/color]Which is all ironic because the Goddess Venus is supposed to represent beauty, love, and prosperity
+
+[color=blue]Me:[/color]This was.. just a hobby?
+
+[color=green]Dad:[/color]I could tell you even more about mars!
+
+[color=blue]Me:[/color]Maybe another day dad.."
+text = "--- September 2th ---
+Dad:Hey sweetie, whats your email and password again?
+
+Me: What for??
+
+Dad:Mom and I are trying to watch the new season of our show and need to use your netflick account
+
+Me:the email should be under photogirl221@gmail.com
+
+Me:and the password should be c4m3r4-12775
+
+Dad:Thanks!
+
+Dad:Hey so the password didn't work. Did you type it in wrong?
+
+Me:Did you put letters instead of numbers again??
+
+Dad:Just logged in.
+
+--- September 30th ---
+Me:Dad weren't you into space or something when you were a kid?
+
+Dad:Was just an old hobby of mine
+
+Me:I'm really enjoying the Venus club, everyone is so nice and welcoming
+
+Dad:Ah the old Venus club still running? I haven't heard of that club since I was in college.
+
+Me:How come you never joined it?
+
+Dad:I'm a bit of a Mars guy myself, at least you're able to inhabit it
+
+Dad:You take one step into Venus and you're as good as gone
+
+Dad:The atmosphere is acidic and thick, it's dry with no evidence of water, and the temperature is hot enough to melt lead
+
+Dad:Which is all ironic because the Goddess Venus is supposed to represent beauty, love, and prosperity
+
+Me:This was.. just a hobby?
+
+Dad:I could tell you even more about mars!
+
+Me:Maybe another day dad.."
+scroll_following = true
+
+[node name="tiffanyChat" type="ScrollContainer" parent="chatterWindow"]
+visible = false
+margin_left = 213.0
+margin_top = 60.0
+margin_right = 997.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 784, 444 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chatterWindow/tiffanyChat"]
+margin_right = 784.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 784, 444 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/tiffanyChat/VBoxContainer"]
+margin_right = 784.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- August 19th ---[/color]
+[color=blue]Me:[/color]Is This Tiffany?
+
+[color=#faa0f2]Tiffany:[/color]Yeah it is, who is this?
+
+[color=blue]Me:[/color]I think we're apart of the same group for photo 1200?
+
+[color=#faa0f2]Tiffany:[/color]Ohhh you're that one girl that sits next to the guy with the glasses right??
+
+[color=blue]Me:[/color]Yeah that's me
+
+[color=blue]Me:[/color]You wana meet at the coffee shop to discuss our project?
+
+[color=#faa0f2]Tiffany:[/color]Sounds great!
+
+[color=gray]--- September 30th ---[/color]
+[color=blue]Me:[/color]Okay I know we already said our photo studies project was going to be on hospital scenery
+
+[color=blue]Me:[/color]Buttttt what if we change it to the solar system??
+
+[color=#faa0f2]Tiffany:[/color]..solar system?
+
+[color=blue]Me:[/color]I've been going to the V.E.N.U.S Club for the past couple of meetings and they had TONS of Venus photos!!
+
+[color=#faa0f2]Tiffany:[/color]can we meet at the library to talk about this in person??
+
+[color=blue]Me:[/color]i'll be there in 10"
+text = "--- August 19th ---
+Me:Is This Tiffany?
+
+Tiffany:Yeah it is, who is this?
+
+Me:I think we're apart of the same group for photo 1200?
+
+Tiffany:Ohhh you're that one girl that sits next to the guy with the glasses right??
+
+Me:Yeah that's me
+
+Me:You wana meet at the coffee shop to discuss our project?
+
+Tiffany:Sounds great!
+
+--- September 30th ---
+Me:Okay I know we already said our photo studies project was going to be on hospital scenery
+
+Me:Buttttt what if we change it to the solar system??
+
+Tiffany:..solar system?
+
+Me:I've been going to the V.E.N.U.S Club for the past couple of meetings and they had TONS of Venus photos!!
+
+Tiffany:can we meet at the library to talk about this in person??
+
+Me:i'll be there in 10"
+scroll_following = true
+
+[node name="ColorRect6" type="ColorRect" parent="chatterWindow"]
+margin_left = 989.0
+margin_top = 2.0
+margin_right = 1009.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chatterWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitChatter" type="Button" parent="chatterWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="chatterWindow"]
+stream = ExtResource( 22 )
+
+[node name="folderWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 752.0
+margin_bottom = 211.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="folderWindow"]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 489.0
+margin_bottom = 534.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="folderWindow"]
+margin_right = 481.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="folderWindow"]
+margin_top = 25.0
+margin_right = 481.0
+margin_bottom = 524.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="folderWindow"]
+margin_top = 25.0
+margin_right = 489.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="folderWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Stuffz / Folder"
+
+[node name="ColorRect6" type="ColorRect" parent="folderWindow"]
+margin_left = 457.0
+margin_top = 2.0
+margin_right = 477.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="folderWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitFolder" type="Button" parent="folderWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="Photo" type="Sprite" parent="folderWindow"]
+position = Vector2( 92, 168 )
+scale = Vector2( 1.31, 1.31 )
+texture = ExtResource( 12 )
+offset = Vector2( 2.29007, -32.0611 )
+
+[node name="Label2" type="Label" parent="folderWindow/Photo"]
+margin_left = -29.771
+margin_top = 12.2137
+margin_right = 33.229
+margin_bottom = 26.2137
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Green.JPG"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="greenButton" type="TextureButton" parent="folderWindow/Photo"]
+margin_left = -41.0
+margin_top = -70.0
+margin_right = 50.0
+margin_bottom = 12.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Photo2" type="Sprite" parent="folderWindow"]
+position = Vector2( 275, 143 )
+scale = Vector2( 1.31, 1.31 )
+texture = ExtResource( 12 )
+offset = Vector2( -22.9008, -12.9771 )
+
+[node name="Label3" type="Label" parent="folderWindow/Photo2"]
+margin_left = -58.0153
+margin_top = 31.2977
+margin_right = 4.98473
+margin_bottom = 45.2977
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Sandy.JPG"
+
+[node name="sandButton" type="TextureButton" parent="folderWindow/Photo2"]
+margin_left = -67.0
+margin_top = -51.0
+margin_right = 27.0
+margin_bottom = 30.0
+script = ExtResource( 4 )
+
+[node name="Photo3" type="Sprite" parent="folderWindow"]
+position = Vector2( 115, 287 )
+scale = Vector2( 1.31, 1.31 )
+texture = ExtResource( 12 )
+offset = Vector2( -22.9008, -12.9771 )
+
+[node name="Label4" type="Label" parent="folderWindow/Photo3"]
+margin_left = -53.4351
+margin_top = 31.2977
+margin_right = 16.5649
+margin_bottom = 45.2977
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Winter.JPG"
+
+[node name="winterButton" type="TextureButton" parent="folderWindow/Photo3"]
+margin_left = -68.0
+margin_top = -51.0
+margin_right = 23.0
+margin_bottom = 27.0
+script = ExtResource( 4 )
+
+[node name="Stikcky" type="Sprite" parent="folderWindow"]
+position = Vector2( 388, 134 )
+scale = Vector2( 1.39562, 1.36007 )
+texture = ExtResource( 13 )
+
+[node name="Label3" type="Label" parent="folderWindow/Stikcky"]
+margin_left = -55.8889
+margin_top = 34.5571
+margin_right = 50.1111
+margin_bottom = 48.5571
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "random Thoughts"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="poemButton" type="TextureButton" parent="folderWindow/Stikcky"]
+margin_left = -41.0
+margin_top = -31.0
+margin_right = 42.0
+margin_bottom = 34.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="folderWindow"]
+stream = ExtResource( 22 )
+
+[node name="recycleWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 752.0
+margin_bottom = 211.0
+script = ExtResource( 2 )
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="recycleWindow"]
+stream = ExtResource( 22 )
+
+[node name="venusWindSFX" type="AudioStreamPlayer" parent="recycleWindow"]
+stream = ExtResource( 26 )
+volume_db = -20.0
+
+[node name="ColorRect3" type="ColorRect" parent="recycleWindow"]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 601.0
+margin_bottom = 398.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="recycleWindow"]
+margin_right = 586.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="recycleWindow"]
+margin_top = 25.0
+margin_right = 592.0
+margin_bottom = 388.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="recycleWindow"]
+margin_top = 25.0
+margin_right = 592.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="recycleWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Recycle Bin"
+
+[node name="Label2" type="Label" parent="recycleWindow"]
+margin_left = 37.0
+margin_top = 25.0
+margin_right = 250.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Restore Recycle Bin"
+
+[node name="restoreButton" type="TextureButton" parent="recycleWindow/Label2"]
+margin_left = 1.0
+margin_right = 213.0
+margin_bottom = 20.0
+
+[node name="ColorRect6" type="ColorRect" parent="recycleWindow"]
+margin_left = 559.0
+margin_top = 2.0
+margin_right = 579.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="recycleWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitRecycle" type="Button" parent="recycleWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="beforeRecyclePass" type="ColorRect" parent="recycleWindow"]
+margin_left = 559.0
+margin_top = 2.0
+margin_right = 559.0
+margin_bottom = 2.0
+
+[node name="Photo" type="Sprite" parent="recycleWindow/beforeRecyclePass"]
+visible = false
+position = Vector2( -490, 159 )
+scale = Vector2( 1.31, 1.31 )
+texture = ExtResource( 12 )
+offset = Vector2( 2.29007, -32.0611 )
+
+[node name="Label2" type="Label" parent="recycleWindow/beforeRecyclePass/Photo"]
+margin_left = -34.3512
+margin_top = 12.2138
+margin_right = 28.6488
+margin_bottom = 26.2138
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "V3NUS.JPG"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="venusButton" type="TextureButton" parent="recycleWindow/beforeRecyclePass/Photo"]
+margin_left = -41.0
+margin_top = -70.0
+margin_right = 50.0
+margin_bottom = 12.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Photo2" type="Sprite" parent="recycleWindow/beforeRecyclePass"]
+visible = false
+position = Vector2( -212, 159 )
+scale = Vector2( 1.31, 1.31 )
+texture = ExtResource( 12 )
+offset = Vector2( 2.29007, -32.0611 )
+
+[node name="Label2" type="Label" parent="recycleWindow/beforeRecyclePass/Photo2"]
+margin_left = -40.458
+margin_top = 9.92366
+margin_right = 43.542
+margin_bottom = 23.9237
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "OFFERING.JPG"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="offeringButton" type="TextureButton" parent="recycleWindow/beforeRecyclePass/Photo2"]
+margin_left = -41.0
+margin_top = -70.0
+margin_right = 50.0
+margin_bottom = 12.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Stikcky" type="Sprite" parent="recycleWindow/beforeRecyclePass"]
+visible = false
+position = Vector2( -346, 124 )
+scale = Vector2( 1.39562, 1.36007 )
+texture = ExtResource( 13 )
+
+[node name="Label3" type="Label" parent="recycleWindow/beforeRecyclePass/Stikcky"]
+margin_left = -55.8889
+margin_top = 34.5571
+margin_right = 50.1111
+margin_bottom = 48.5571
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "VENUSVENUSVEN.."
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label3" type="Label" parent="recycleWindow/beforeRecyclePass/Stikcky/Label3"]
+anchor_left = 2.71063
+anchor_top = -2.52088
+anchor_right = 2.71063
+anchor_bottom = -2.52088
+margin_left = -55.8889
+margin_top = 34.5571
+margin_right = 50.1111
+margin_bottom = 48.5571
+rect_pivot_offset = Vector2( 63, 19 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Venus.exe"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="venusvenusButton" type="TextureButton" parent="recycleWindow/beforeRecyclePass/Stikcky"]
+margin_left = -41.0
+margin_top = -31.0
+margin_right = 42.0
+margin_bottom = 34.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Venus" type="Sprite" parent="recycleWindow/beforeRecyclePass"]
+visible = false
+position = Vector2( -55, 114 )
+scale = Vector2( 0.94, 0.94 )
+texture = ExtResource( 21 )
+
+[node name="venusexeButton" type="TextureButton" parent="recycleWindow/beforeRecyclePass/Venus"]
+margin_left = -76.0
+margin_top = -51.0
+margin_right = 59.0
+margin_bottom = 55.0
+script = ExtResource( 4 )
+
+[node name="venusWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 640.0
+margin_bottom = 211.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="venusWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="venusWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="venusWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="venusWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="venusWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "V3NU5.JPG"
+
+[node name="Venus" type="Sprite" parent="venusWindow"]
+position = Vector2( 181.5, 211.5 )
+scale = Vector2( 0.581667, 0.511667 )
+texture = ExtResource( 19 )
+
+[node name="ColorRect6" type="ColorRect" parent="venusWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="venusWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitVENUS" type="Button" parent="venusWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="venusWindow"]
+stream = ExtResource( 22 )
+
+[node name="offeringWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 640.0
+margin_bottom = 211.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="offeringWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="offeringWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="offeringWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="offeringWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="offeringWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "OFFERING.JPG"
+
+[node name="ColorRect6" type="ColorRect" parent="offeringWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="offeringWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitOffering" type="Button" parent="offeringWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="Altar" type="Sprite" parent="offeringWindow"]
+position = Vector2( 181.25, 209.75 )
+scale = Vector2( 0.585833, 0.5175 )
+texture = ExtResource( 20 )
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="offeringWindow"]
+stream = ExtResource( 22 )
+
+[node name="venusvenusWindow" type="Panel" parent="."]
+visible = false
+margin_left = 520.0
+margin_top = 448.0
+margin_right = 889.0
+margin_bottom = 473.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="venusvenusWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="venusvenusWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="venusvenusWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="venusvenusWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="venusvenusWindow"]
+margin_left = 40.0
+margin_right = 150.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "VENUSVENUSVENUSVE.. / Notes"
+
+[node name="ColorRect6" type="ColorRect" parent="venusvenusWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="venusvenusWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitVenusVenus" type="Button" parent="venusvenusWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="venusvenusWindow"]
+margin_left = 9.0
+margin_top = 60.0
+margin_right = 352.0
+margin_bottom = 360.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 12 )
+bbcode_text = "Dear Venus, make everything all right, please.
+
+VENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUS
+
+Dear Venus, goddess of love and beauty, make this a better world for all. With equality and love. For all living things. Thank you.
+
+VENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUS
+
+Offerings to venus shall include, 1 white candle, 6 diamond shards, 9 floral petals, and 3 sweet treats"
+text = "Dear Venus, make everything all right, please.
+
+VENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUS
+
+Dear Venus, goddess of love and beauty, make this a better world for all. With equality and love. For all living things. Thank you.
+
+VENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUSVENUS
+
+Offerings to venus shall include, 1 white candle, 6 diamond shards, 9 floral petals, and 3 sweet treats"
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="venusvenusWindow"]
+stream = ExtResource( 22 )
+
+[node name="recylePassWindow" type="Panel" parent="."]
+visible = false
+margin_left = 581.0
+margin_top = 252.0
+margin_right = 950.0
+margin_bottom = 277.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="recylePassWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 190.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="recylePassWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="recylePassWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 182.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="recylePassWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="recylePassWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Password Protected Action"
+
+[node name="Label2" type="Label" parent="recylePassWindow"]
+margin_left = 5.0
+margin_top = 127.0
+margin_right = 378.0
+margin_bottom = 147.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Please Enter The 4 Digit Passcode"
+
+[node name="ColorRect6" type="ColorRect" parent="recylePassWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="recylePassWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitRecylePass" type="Button" parent="recylePassWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="recylePass" type="LineEdit" parent="recylePassWindow"]
+margin_left = 8.0
+margin_top = 102.0
+margin_right = 355.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 19 )
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="recylePassWindow"]
+stream = ExtResource( 22 )
+
+[node name="virusWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 1281.0
+margin_bottom = 233.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="virusWindow"]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 1018.0
+margin_bottom = 570.0
+color = Color( 0.188235, 0.211765, 0.290196, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow"]
+margin_right = 1011.0
+margin_bottom = 47.0
+color = Color( 0.00392157, 0.00392157, 0.0117647, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="virusWindow"]
+margin_top = 25.0
+margin_right = 1011.0
+margin_bottom = 564.0
+color = Color( 0.235294, 0.266667, 0.364706, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="virusWindow"]
+margin_top = 25.0
+margin_right = 1011.0
+margin_bottom = 50.0
+color = Color( 0.188235, 0.211765, 0.290196, 1 )
+
+[node name="Label" type="Label" parent="virusWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 213.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "VENUS - Chatroom"
+
+[node name="ColorRect6" type="ColorRect" parent="virusWindow"]
+margin_left = 989.0
+margin_top = 2.0
+margin_right = 1009.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="virusWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitVirus" type="Button" parent="virusWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="afterPassword" type="ColorRect" parent="virusWindow"]
+visible = false
+margin_top = 25.0
+margin_bottom = 25.0
+
+[node name="LineEdit" type="LineEdit" parent="virusWindow/afterPassword"]
+margin_left = 204.0
+margin_top = 495.0
+margin_right = 1011.0
+margin_bottom = 539.0
+custom_fonts/font = SubResource( 4 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="virusWindow/afterPassword"]
+margin_top = 32.0
+margin_right = 198.0
+margin_bottom = 539.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="virusWindow/afterPassword/ScrollContainer"]
+margin_right = 198.0
+margin_bottom = 548.0
+rect_min_size = Vector2( 198, 514 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_right = 198.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 13 )
+text = " acc89038"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0, 1, 0.0627451, 1 )
+
+[node name="Label2" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 198.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 13 )
+text = " acc43421"
+
+[node name="adminColor" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label2"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label3" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 198.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 13 )
+text = " acc09864"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label3"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label4" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 198.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 13 )
+text = " acc88938"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label4"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label5" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 198.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 13 )
+text = " acc87362"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label5"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label6" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 198.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 13 )
+text = " acc12933"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label6"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label7" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 198.0
+margin_bottom = 164.0
+custom_fonts/font = SubResource( 13 )
+text = " acc93842"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label7"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label8" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 198.0
+margin_bottom = 188.0
+custom_fonts/font = SubResource( 13 )
+text = " acc10023"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label8"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label9" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 192.0
+margin_right = 198.0
+margin_bottom = 212.0
+custom_fonts/font = SubResource( 13 )
+text = " acc09382"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label9"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label10" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 198.0
+margin_bottom = 236.0
+custom_fonts/font = SubResource( 13 )
+text = " acc09238"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label10"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label11" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 198.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 13 )
+text = " acc99982"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label11"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label12" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 264.0
+margin_right = 198.0
+margin_bottom = 284.0
+custom_fonts/font = SubResource( 13 )
+text = " acc78777"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label12"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label13" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 198.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 13 )
+text = " acc09099"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label13"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label14" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 312.0
+margin_right = 198.0
+margin_bottom = 332.0
+custom_fonts/font = SubResource( 13 )
+text = " acc81822"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label14"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label15" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 336.0
+margin_right = 198.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 13 )
+text = " acc98980"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label15"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label16" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 198.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 13 )
+text = " acc00722"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label16"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label17" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 384.0
+margin_right = 198.0
+margin_bottom = 404.0
+custom_fonts/font = SubResource( 13 )
+text = " acc88982"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label17"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label18" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 408.0
+margin_right = 198.0
+margin_bottom = 428.0
+custom_fonts/font = SubResource( 13 )
+text = " acc56373"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label18"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label19" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 198.0
+margin_bottom = 452.0
+custom_fonts/font = SubResource( 13 )
+text = " acc22334"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label19"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label20" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 456.0
+margin_right = 198.0
+margin_bottom = 476.0
+custom_fonts/font = SubResource( 13 )
+text = " acc23134"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label20"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label21" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 480.0
+margin_right = 198.0
+margin_bottom = 500.0
+custom_fonts/font = SubResource( 13 )
+text = " acc33421"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label21"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label22" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 504.0
+margin_right = 198.0
+margin_bottom = 524.0
+custom_fonts/font = SubResource( 13 )
+text = " acc33345"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label22"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="Label23" type="Label" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer"]
+margin_top = 528.0
+margin_right = 198.0
+margin_bottom = 548.0
+custom_fonts/font = SubResource( 13 )
+text = " acc23425"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/afterPassword/ScrollContainer/VBoxContainer/Label23"]
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 115.0
+margin_bottom = 15.0
+color = Color( 0.682353, 0.682353, 0.682353, 1 )
+
+[node name="venusText" type="RichTextLabel" parent="virusWindow/afterPassword"]
+margin_left = 205.0
+margin_top = 33.0
+margin_right = 997.0
+margin_bottom = 488.0
+custom_fonts/normal_font = SubResource( 17 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]--- December 4th ---[/color]
+[color=gray]--- acc43421 has logged in ---[/color]
+[color=gray]--- acc23134 has logged in ---[/color]
+[color=gray]--- acc81822 has logged in ---[/color]
+[color=gray]--- acc88982 has logged in ---[/color]
+[color=gray]--- acc98990 has logged in ---[/color]
+[color=red]acc43421: [/color]Welcome to the first part of initiation.
+
+[color=red]acc43421: [/color]I should thank all that have stuck with us this far.
+
+acc33421: Okay.. so why do we need to use this weird chat service???
+
+acc23134: Yeah this app gives me the chills
+
+[color=red]acc43421: [/color]I know this will feel a little bit weird, but I truly believe the V.E.N.U.S chat service is much more secure.
+
+acc98990: Why are all of our names hidden??
+
+acc23134: I have some homework I need to get done is it okay if I join back when I'm done? 
+
+acc23134: I have no idea who is who
+
+[color=gray]--- adminstrator has disabled chatting --- [/color]
+
+[color=red]acc43421: [/color]All your questions will be answered after the initiation ceremony.
+
+[color=red]acc43421: [/color]As a reminder for intiation, please memorize both prayers to Venus, it will only help during the ceremony.
+
+[color=red]acc43421: [/color]Good luck tomorrow.
+
+[color=gray]--- adminstrator has disabled chatting --- [/color]
+
+[color=gray]--- December 5th ---[/color]
+[color=gray]--- acc43421 has logged in ---[/color]
+[color=gray]--- acc23134 has logged in ---[/color]
+[color=gray]--- acc81822 has logged in ---[/color]
+[color=gray]--- acc88982 has logged in ---[/color]
+[color=gray]--- acc98990 has logged in ---[/color]
+
+[color=gray]--- ANNOUNCEMENT FROM ADMIN ---[/color]
+
+[color=red]acc43421: [/color] An announcement to our newest members, you should be recieving a parcel in your mailbox that contains contents to commence the initiation.
+
+[color=red]acc43421: [/color]The parcel will not only have initiation contents, but sacrificial items. Memorize what to sacrifice, and how many of each item. Failure to complete the tasks will result in elimination from the club.
+
+[color=red]acc43421:[/color] Happy initiation to all our newest members.
+
+acc81822: Sacrifice?
+
+acc88982: How do you know what dorms we live in?
+
+acc98990: What do you mean by elimination????? 
+
+[color=gray]--- adminstrator has disabled chatting ---[/color]
+
+[color=gray]--- acc89038 has logged in ---[/color]"
+text = "--- December 4th ---
+--- acc43421 has logged in ---
+--- acc23134 has logged in ---
+--- acc81822 has logged in ---
+--- acc88982 has logged in ---
+--- acc98990 has logged in ---
+acc43421: Welcome to the first part of initiation.
+
+acc43421: I should thank all that have stuck with us this far.
+
+acc33421: Okay.. so why do we need to use this weird chat service???
+
+acc23134: Yeah this app gives me the chills
+
+acc43421: I know this will feel a little bit weird, but I truly believe the V.E.N.U.S chat service is much more secure.
+
+acc98990: Why are all of our names hidden??
+
+acc23134: I have some homework I need to get done is it okay if I join back when I'm done? 
+
+acc23134: I have no idea who is who
+
+--- adminstrator has disabled chatting --- 
+
+acc43421: All your questions will be answered after the initiation ceremony.
+
+acc43421: As a reminder for intiation, please memorize both prayers to Venus, it will only help during the ceremony.
+
+acc43421: Good luck tomorrow.
+
+--- adminstrator has disabled chatting --- 
+
+--- December 5th ---
+--- acc43421 has logged in ---
+--- acc23134 has logged in ---
+--- acc81822 has logged in ---
+--- acc88982 has logged in ---
+--- acc98990 has logged in ---
+
+--- ANNOUNCEMENT FROM ADMIN ---
+
+acc43421:  An announcement to our newest members, you should be recieving a parcel in your mailbox that contains contents to commence the initiation.
+
+acc43421: The parcel will not only have initiation contents, but sacrificial items. Memorize what to sacrifice, and how many of each item. Failure to complete the tasks will result in elimination from the club.
+
+acc43421: Happy initiation to all our newest members.
+
+acc81822: Sacrifice?
+
+acc88982: How do you know what dorms we live in?
+
+acc98990: What do you mean by elimination????? 
+
+--- adminstrator has disabled chatting ---
+
+--- acc89038 has logged in ---"
+scroll_following = true
+
+[node name="beforePassword" type="ColorRect" parent="virusWindow"]
+
+[node name="Venus" type="Sprite" parent="virusWindow/beforePassword"]
+position = Vector2( 224, 265 )
+scale = Vector2( 1.69, 1.69 )
+texture = ExtResource( 21 )
+
+[node name="emailText" type="LineEdit" parent="virusWindow/beforePassword"]
+margin_left = 559.0
+margin_top = 297.0
+margin_right = 802.0
+margin_bottom = 321.0
+custom_fonts/font = SubResource( 20 )
+
+[node name="Label" type="Label" parent="virusWindow/beforePassword"]
+margin_left = 53.0
+margin_top = 364.0
+margin_right = 389.0
+margin_bottom = 384.0
+custom_fonts/font = SubResource( 15 )
+text = "WELCOME TO V.E.N.U.S Chatroom!"
+
+[node name="Label4" type="Label" parent="virusWindow/beforePassword"]
+margin_left = 559.0
+margin_top = 273.0
+margin_right = 614.0
+margin_bottom = 293.0
+custom_fonts/font = SubResource( 15 )
+text = "Email"
+
+[node name="passText" type="LineEdit" parent="virusWindow/beforePassword"]
+margin_left = 559.0
+margin_top = 369.0
+margin_right = 802.0
+margin_bottom = 393.0
+custom_fonts/font = SubResource( 21 )
+
+[node name="Label5" type="Label" parent="virusWindow/beforePassword"]
+margin_left = 559.0
+margin_top = 345.0
+margin_right = 647.0
+margin_bottom = 365.0
+custom_fonts/font = SubResource( 15 )
+text = "Password"
+
+[node name="Label3" type="Label" parent="virusWindow/beforePassword"]
+margin_left = 6.0
+margin_top = 543.0
+margin_right = 485.0
+margin_bottom = 606.0
+custom_fonts/font = SubResource( 15 )
+text = "Please ask your group leader for passwords!"
+
+[node name="Label2" type="Label" parent="virusWindow/beforePassword"]
+margin_left = 113.0
+margin_top = 388.0
+margin_right = 318.0
+margin_bottom = 408.0
+text = "There are 0 current users active"
+
+[node name="ColorRect" type="ColorRect" parent="virusWindow/beforePassword"]
+margin_left = 559.0
+margin_top = 404.0
+margin_right = 634.0
+margin_bottom = 424.0
+color = Color( 1, 0.776471, 0.427451, 1 )
+
+[node name="Label6" type="Label" parent="virusWindow/beforePassword/ColorRect"]
+margin_left = 4.0
+margin_right = 72.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 16 )
+text = "Log in"
+
+[node name="loginButton" type="TextureButton" parent="virusWindow/beforePassword/ColorRect"]
+margin_right = 75.0
+margin_bottom = 20.0
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="virusWindow"]
+stream = ExtResource( 22 )
+
+[node name="passWindow" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 640.0
+margin_bottom = 211.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="passWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 190.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="passWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="passWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 182.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="passWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="passWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Password Protected Folder"
+
+[node name="ColorRect6" type="ColorRect" parent="passWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="passWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitPass" type="Button" parent="passWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="folderPass" type="LineEdit" parent="passWindow"]
+margin_left = 9.0
+margin_top = 102.0
+margin_right = 356.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 18 )
+
+[node name="Label2" type="Label" parent="passWindow"]
+margin_left = 17.0
+margin_top = 150.0
+margin_right = 345.0
+margin_bottom = 168.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "*Hint* Anniversary + Tina's Bday"
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="passWindow"]
+stream = ExtResource( 22 )
+
+[node name="pic1Window" type="Panel" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 186.0
+margin_right = 640.0
+margin_bottom = 211.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="pic1Window"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="pic1Window"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="pic1Window"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="pic1Window"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="pic1Window"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Green.JPG"
+
+[node name="ColorRect6" type="ColorRect" parent="pic1Window"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pic1Window/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitPic1" type="Button" parent="pic1Window/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="Pic1" type="Sprite" parent="pic1Window"]
+position = Vector2( 180.5, 207 )
+scale = Vector2( 0.575, 0.503333 )
+texture = ExtResource( 8 )
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="pic1Window"]
+stream = ExtResource( 22 )
+
+[node name="pic2Window" type="Panel" parent="."]
+visible = false
+margin_left = 760.0
+margin_top = 152.0
+margin_right = 1129.0
+margin_bottom = 177.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="pic2Window"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="pic2Window"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="pic2Window"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="pic2Window"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="pic2Window"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Sandy.JPG"
+
+[node name="ColorRect6" type="ColorRect" parent="pic2Window"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pic2Window/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitPic2" type="Button" parent="pic2Window/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="Pic2" type="Sprite" parent="pic2Window"]
+position = Vector2( 181.5, 207.5 )
+scale = Vector2( 0.585, 0.508333 )
+texture = ExtResource( 9 )
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="pic2Window"]
+stream = ExtResource( 22 )
+
+[node name="pic3Window" type="Panel" parent="."]
+visible = false
+margin_left = 520.0
+margin_top = 448.0
+margin_right = 889.0
+margin_bottom = 473.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="pic3Window"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="pic3Window"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="pic3Window"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="pic3Window"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="pic3Window"]
+margin_left = 40.0
+margin_right = 150.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Winter.JPG"
+
+[node name="ColorRect6" type="ColorRect" parent="pic3Window"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pic3Window/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitPic3" type="Button" parent="pic3Window/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="Pic3" type="Sprite" parent="pic3Window"]
+position = Vector2( 180.5, 208.25 )
+scale = Vector2( 0.571667, 0.505833 )
+texture = ExtResource( 10 )
+
+[node name="Pass3" type="Sprite" parent="pic3Window"]
+position = Vector2( 1, 108 )
+texture = ExtResource( 11 )
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="pic3Window"]
+stream = ExtResource( 22 )
+
+[node name="poemWindow" type="Panel" parent="."]
+visible = false
+margin_left = 520.0
+margin_top = 448.0
+margin_right = 889.0
+margin_bottom = 473.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="poemWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 374.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="poemWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="poemWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 369.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="poemWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="poemWindow"]
+margin_left = 40.0
+margin_right = 150.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Random Thoughts / Notes"
+
+[node name="ColorRect6" type="ColorRect" parent="poemWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="poemWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitThought" type="Button" parent="poemWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="poemWindow"]
+margin_left = 9.0
+margin_top = 60.0
+margin_right = 352.0
+margin_bottom = 360.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 12 )
+bbcode_text = "If clouds are the marshmallow of the sky, what would be the chocolate and graham cracker equivalent???"
+text = "If clouds are the marshmallow of the sky, what would be the chocolate and graham cracker equivalent???"
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="poemWindow"]
+stream = ExtResource( 22 )
+
+[node name="notesWindow" type="Panel" parent="."]
+visible = false
+margin_left = 272.0
+margin_top = 191.0
+margin_right = 641.0
+margin_bottom = 216.0
+script = ExtResource( 2 )
+
+[node name="ColorRect3" type="ColorRect" parent="notesWindow"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 369.0
+margin_bottom = 570.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="notesWindow"]
+margin_right = 361.0
+margin_bottom = 47.0
+color = Color( 0.227451, 0.203922, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="notesWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 564.0
+color = Color( 1, 0.988235, 0.878431, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="notesWindow"]
+margin_top = 25.0
+margin_right = 361.0
+margin_bottom = 50.0
+color = Color( 0.878431, 0.878431, 0.72549, 1 )
+
+[node name="Label" type="Label" parent="notesWindow"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 114.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.945536, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Notes"
+
+[node name="Pass1" type="Sprite" parent="notesWindow"]
+position = Vector2( 157, 617 )
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="notesWindow"]
+margin_left = 9.0
+margin_top = 57.0
+margin_right = 356.0
+margin_bottom = 557.0
+rect_min_size = Vector2( 341, 500 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "8/17
+Hello! This is kind of weird i'm not used to writing to myself.. but I think it'll be a good idea to write a monthly report on whats been going on in my life.
+
+Today's my first day of college, exciting stuff. Thankfully I have Tina here, I wouldn't know what to do without her.
+
+Not that much to report on this month except that i'm really exited for this new atmosphere. A whole new environment away from home, and a way for me to create meaningful experiences. Mom and dad for sure over prepared me and packed wayyy too much. Some things never change.
+
+9/30
+It's been awhile since i've typed in this app.. forgot i was doing this until Jeremy pointed it out. OH JEREMY IS YOUR BOYFRIEND. Mom and dad would kill me if they ever found out I was dating someone.
+
+it's been a week since our first date, would that be our anniversary?? or would it be when he asked me out??? I'm just going to say our anniversary is our first date. Dating is sooooooo confusing..
+
+I've met a lot of cool people, and tried a couple of different clubs. I really like the V.E.N.U.S club. I can't say im much of a space gal, but everyone is so nice and welcoming, it's like i'm already family!
+
+10/28
+Jeremy and I are still going strong!! I don't think there's anyone in the world I'd rather be with. He's super understanding, and loves me for me. Tina has other opinions on him, but she told me as long as i'm happy shes happy.
+
+On a lighter note, i've consistently been going to the V.E.N.U.S club for a couple of weeks, and I can for sure say I might stick with this club throughout the year. Apparently there is some sort of initiation ceremony near the end of the semester? I honestly don't pay as much attention as I probably should.. 
+
+11/16
+I am SO over this semester.. I just want to be done with finals and tests and studying and ALL OF IT!! The only thing that's been keeping me sane are Tina, Jeremy, and V.E.N.U.S Club. Tina and Jeremy are obvious, but V.E.N.U.S Club just let's me just vent all the anger out. 
+
+We talked about Venus, no not the planet, but the goddess. It reminded me of this one time near the beginning of the year I talked to dad about her. His words of the planet and goddess clashing always resonate within me.
+"
+text = "8/17
+Hello! This is kind of weird i'm not used to writing to myself.. but I think it'll be a good idea to write a monthly report on whats been going on in my life.
+
+Today's my first day of college, exciting stuff. Thankfully I have Tina here, I wouldn't know what to do without her.
+
+Not that much to report on this month except that i'm really exited for this new atmosphere. A whole new environment away from home, and a way for me to create meaningful experiences. Mom and dad for sure over prepared me and packed wayyy too much. Some things never change.
+
+9/30
+It's been awhile since i've typed in this app.. forgot i was doing this until Jeremy pointed it out. OH JEREMY IS YOUR BOYFRIEND. Mom and dad would kill me if they ever found out I was dating someone.
+
+it's been a week since our first date, would that be our anniversary?? or would it be when he asked me out??? I'm just going to say our anniversary is our first date. Dating is sooooooo confusing..
+
+I've met a lot of cool people, and tried a couple of different clubs. I really like the V.E.N.U.S club. I can't say im much of a space gal, but everyone is so nice and welcoming, it's like i'm already family!
+
+10/28
+Jeremy and I are still going strong!! I don't think there's anyone in the world I'd rather be with. He's super understanding, and loves me for me. Tina has other opinions on him, but she told me as long as i'm happy shes happy.
+
+On a lighter note, i've consistently been going to the V.E.N.U.S club for a couple of weeks, and I can for sure say I might stick with this club throughout the year. Apparently there is some sort of initiation ceremony near the end of the semester? I honestly don't pay as much attention as I probably should.. 
+
+11/16
+I am SO over this semester.. I just want to be done with finals and tests and studying and ALL OF IT!! The only thing that's been keeping me sane are Tina, Jeremy, and V.E.N.U.S Club. Tina and Jeremy are obvious, but V.E.N.U.S Club just let's me just vent all the anger out. 
+
+We talked about Venus, no not the planet, but the goddess. It reminded me of this one time near the beginning of the year I talked to dad about her. His words of the planet and goddess clashing always resonate within me.
+"
+
+[node name="ColorRect6" type="ColorRect" parent="notesWindow"]
+margin_left = 337.0
+margin_top = 2.0
+margin_right = 357.0
+margin_bottom = 22.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="notesWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center]X"
+text = "X"
+scroll_active = false
+
+[node name="exitNotes" type="Button" parent="notesWindow/ColorRect6"]
+margin_right = 20.0
+margin_bottom = 20.0
+flat = true
+
+[node name="doubleClickSFX" type="AudioStreamPlayer" parent="notesWindow"]
+stream = ExtResource( 22 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_top = 1003.0
+margin_right = 1921.0
+margin_bottom = 1080.0
+color = Color( 0.352941, 0.415686, 0.819608, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 1014.0
+margin_right = 1921.0
+margin_bottom = 1080.0
+color = Color( 0.490196, 0.490196, 0.756863, 1 )
+
+[connection signal="ready" from="." to="." method="_on_laptop_ready"]
+[connection signal="double_click" from="recyleButton" to="recycleWindow" method="_on_recyleButton_double_click"]
+[connection signal="double_click" from="Chatter/chatterButton" to="Chatter/chatterButton" method="_on_TextureButton_double_click"]
+[connection signal="double_click" from="Chatter/chatterButton" to="chatterWindow" method="_on_chatterButton_double_click"]
+[connection signal="double_click" from="Chatter/chatterButton" to="chatterWindow" method="_on_TextureButton_double_click"]
+[connection signal="pressed" from="Chatter/chatterButton" to="Chatter/chatterButton" method="_on_TextureButton_pressed"]
+[connection signal="ready" from="Chatter/chatterButton" to="chatterWindow" method="_on_TextureButton_ready"]
+[connection signal="double_click" from="Notes/notesButton" to="Notes/notesButton" method="_on_TextureButton_double_click"]
+[connection signal="double_click" from="Notes/notesButton" to="notesWindow" method="_on_notesButton_double_click"]
+[connection signal="pressed" from="Notes/notesButton" to="Notes/notesButton" method="_on_TextureButton_pressed"]
+[connection signal="ready" from="Notes/notesButton" to="chatterWindow" method="_on_TextureButton_ready"]
+[connection signal="double_click" from="Folder/folderButton" to="." method="_on_folderButton_double_click"]
+[connection signal="double_click" from="Folder/folderButton" to="Folder/folderButton" method="_on_TextureButton_double_click"]
+[connection signal="double_click" from="Folder/folderButton" to="passWindow" method="_on_folderButton_double_click"]
+[connection signal="pressed" from="Folder/folderButton" to="Folder/folderButton" method="_on_TextureButton_pressed"]
+[connection signal="ready" from="Folder/folderButton" to="chatterWindow" method="_on_TextureButton_ready"]
+[connection signal="double_click" from="Folder2/folder2Button" to="Folder2/folder2Button" method="_on_TextureButton_double_click"]
+[connection signal="double_click" from="Folder2/folder2Button" to="folderWindow" method="_on_folder2Button_double_click"]
+[connection signal="double_click" from="Folder2/folder2Button" to="folderWindow" method="_on_folderButton_double_click"]
+[connection signal="pressed" from="Folder2/folder2Button" to="Folder2/folder2Button" method="_on_TextureButton_pressed"]
+[connection signal="ready" from="Folder2/folder2Button" to="chatterWindow" method="_on_TextureButton_ready"]
+[connection signal="gui_input" from="chatterWindow" to="chatterWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="chatterWindow/ColorRect" to="chatterWindow" method="_on_ColorRect_gui_input"]
+[connection signal="ready" from="chatterWindow/leftScroll" to="." method="_on_ScrollContainer_ready"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel/jeremyButton" to="." method="_on_jeremyButton_pressed"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel2/tinaButton" to="." method="_on_tinaButton_pressed"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel3/momButton" to="." method="_on_momButton_pressed"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel4/user314Button" to="." method="_on_user314Button_pressed"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel5/dadButton" to="." method="_on_dadButton_pressed"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel6/user618Button" to="." method="_on_user618Button_pressed"]
+[connection signal="pressed" from="chatterWindow/leftScroll/VBoxContainer/RichTextLabel7/Tiffany" to="." method="_on_Tiffany_pressed"]
+[connection signal="pressed" from="chatterWindow/ColorRect6/exitChatter" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="chatterWindow/ColorRect6/exitChatter" to="." method="_on_exitChatter_pressed"]
+[connection signal="gui_input" from="folderWindow" to="folderWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="folderWindow/ColorRect" to="folderWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="folderWindow/ColorRect6/exitFolder" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="folderWindow/ColorRect6/exitFolder" to="." method="_on_exitFolder_pressed"]
+[connection signal="double_click" from="folderWindow/Photo/greenButton" to="pic1Window" method="_on_greenButton_double_click"]
+[connection signal="double_click" from="folderWindow/Photo2/sandButton" to="pic2Window" method="_on_sandButton_double_click"]
+[connection signal="double_click" from="folderWindow/Photo3/winterButton" to="pic3Window" method="_on_winterButton_double_click"]
+[connection signal="double_click" from="folderWindow/Stikcky/poemButton" to="poemWindow" method="_on_poemButton_double_click"]
+[connection signal="pressed" from="folderWindow/Stikcky/poemButton" to="poemWindow" method="_on_poemButton_pressed"]
+[connection signal="gui_input" from="recycleWindow" to="recycleWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="recycleWindow/ColorRect" to="recycleWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="recycleWindow/Label2/restoreButton" to="recylePassWindow" method="_on_restoreButton_pressed"]
+[connection signal="pressed" from="recycleWindow/ColorRect6/exitRecycle" to="." method="_on_exitRecycle_pressed"]
+[connection signal="double_click" from="recycleWindow/beforeRecyclePass/Photo/venusButton" to="venusWindow" method="_on_venusButton_double_click"]
+[connection signal="double_click" from="recycleWindow/beforeRecyclePass/Photo2/offeringButton" to="offeringWindow" method="_on_offeringButton_double_click"]
+[connection signal="double_click" from="recycleWindow/beforeRecyclePass/Stikcky/venusvenusButton" to="venusvenusWindow" method="_on_venusvenusButton_double_click"]
+[connection signal="pressed" from="recycleWindow/beforeRecyclePass/Stikcky/venusvenusButton" to="poemWindow" method="_on_poemButton_pressed"]
+[connection signal="double_click" from="recycleWindow/beforeRecyclePass/Venus/venusexeButton" to="." method="_on_venusexeButton_double_click"]
+[connection signal="double_click" from="recycleWindow/beforeRecyclePass/Venus/venusexeButton" to="virusWindow" method="_on_venusexeButton_double_click"]
+[connection signal="gui_input" from="venusWindow" to="venusWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="venusWindow/ColorRect" to="venusWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="venusWindow/ColorRect6/exitVENUS" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="venusWindow/ColorRect6/exitVENUS" to="." method="_on_exitVENUS_pressed"]
+[connection signal="gui_input" from="offeringWindow" to="offeringWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="offeringWindow/ColorRect" to="offeringWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="offeringWindow/ColorRect6/exitOffering" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="offeringWindow/ColorRect6/exitOffering" to="." method="_on_exitOffering_pressed"]
+[connection signal="gui_input" from="venusvenusWindow" to="venusvenusWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="venusvenusWindow/ColorRect" to="venusvenusWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="venusvenusWindow/ColorRect6/exitVenusVenus" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="venusvenusWindow/ColorRect6/exitVenusVenus" to="." method="_on_exitVenusVenus_pressed"]
+[connection signal="gui_input" from="recylePassWindow" to="recylePassWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="recylePassWindow/ColorRect" to="recylePassWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="recylePassWindow/ColorRect6/exitRecylePass" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="recylePassWindow/ColorRect6/exitRecylePass" to="." method="_on_exitRecylePass_pressed"]
+[connection signal="text_entered" from="recylePassWindow/recylePass" to="." method="_on_recylePass_text_entered"]
+[connection signal="gui_input" from="virusWindow" to="virusWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="virusWindow/ColorRect" to="virusWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="virusWindow/ColorRect6/exitVirus" to="." method="_on_exitVirus_pressed"]
+[connection signal="pressed" from="virusWindow/beforePassword/ColorRect/loginButton" to="." method="_on_loginButton_pressed"]
+[connection signal="gui_input" from="passWindow" to="passWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="passWindow/ColorRect" to="passWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="passWindow/ColorRect6/exitPass" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="passWindow/ColorRect6/exitPass" to="." method="_on_exitPass_pressed"]
+[connection signal="text_entered" from="passWindow/folderPass" to="." method="_on_folderPass_text_entered"]
+[connection signal="gui_input" from="pic1Window" to="pic1Window" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="pic1Window/ColorRect" to="pic1Window" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="pic1Window/ColorRect6/exitPic1" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="pic1Window/ColorRect6/exitPic1" to="." method="_on_exitPic1_pressed"]
+[connection signal="gui_input" from="pic2Window" to="pic2Window" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="pic2Window/ColorRect" to="pic2Window" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="pic2Window/ColorRect6/exitPic2" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="pic2Window/ColorRect6/exitPic2" to="." method="_on_exitPic2_pressed"]
+[connection signal="gui_input" from="pic3Window" to="pic3Window" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="pic3Window/ColorRect" to="pic3Window" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="pic3Window/ColorRect6/exitPic3" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="pic3Window/ColorRect6/exitPic3" to="." method="_on_exitPic3_pressed"]
+[connection signal="gui_input" from="poemWindow" to="poemWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="poemWindow/ColorRect" to="poemWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="poemWindow/ColorRect6/exitThought" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="poemWindow/ColorRect6/exitThought" to="." method="_on_exitThought_pressed"]
+[connection signal="gui_input" from="notesWindow" to="notesWindow" method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="notesWindow/ColorRect" to="notesWindow" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="notesWindow/ColorRect6/exitNotes" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="notesWindow/ColorRect6/exitNotes" to="." method="_on_exitNotes_pressed"]
